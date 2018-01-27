@@ -1,24 +1,17 @@
-# README
+golf
+=======================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### POST /user_token to authenticate a user
 
-Things you may want to cover:
+```
+# e.g.
+curl "http://localhost:3000/user_token" -H "Content-Type: application/json" -X "POST" -d $'{"auth": {"email": "user1@estemity.com", "password": "password123"}}'
+{"auth": { "email": "user1@estemity.com", "password": "password123" }}
+# => { jwt: "eyJ0eXA.." }
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Use JWT in subsequent requests
+```
+# e.g.
+curl "http://localhost:3000/users" -H "Authorization: Bearer eyJ0eXA.."
+```

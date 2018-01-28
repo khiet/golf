@@ -4,7 +4,7 @@ rvm:
  - 2.4.3
 
 services:
-  - postgresql
+  - sqlite3
 
 cache:
   - bundler

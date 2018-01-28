@@ -13,7 +13,7 @@ RSpec.describe "users" do
   it 'returns a list of users' do
     get '/users', headers: authorization_header(user1)
 
-    expect(response).to be_success
+    expect(response).to be_ok
     expect(json_body.length).to eq(2)
   end
 

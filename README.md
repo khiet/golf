@@ -1,5 +1,6 @@
 golf
 =======================
+[![Build Status](https://travis-ci.org/khiet/golf.svg?branch=master)](https://travis-ci.org/khiet/golf)
 
 ### POST /user_token to authenticate a user
 

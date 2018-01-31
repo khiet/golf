@@ -15,6 +15,7 @@ RSpec.describe "users" do
 
       expect(response).to be_ok
       expect(json_body.length).to eq(2)
+      expect(json_body.first.keys).to match_array(['id', 'email', 'role'])
     end
 
     context 'when there is no authorization header' do
@@ -38,7 +39,7 @@ RSpec.describe "users" do
       expect { post '/users', params: params }.to change { User.count }.by(1)
 
       expect(response).to be_created
-      expect(json_body.keys).to match_array(['id', 'email', 'created_at'])
+      expect(json_body.keys).to match_array(['id', 'email'])
       expect(json_body['email']).to eq email
     end
 
@@ -46,7 +47,7 @@ RSpec.describe "users" do
       let(:email) { 'foobar' }
 
       it 'returns an error' do
-        expect { post '/users', params: params }.to_not change { User.count }
+        expect { post '/users', params: params }.not_to change { User.count }
 
         expect(response).to be_bad_request
         expect(json_body['error']).to eq 'Email is invalid'

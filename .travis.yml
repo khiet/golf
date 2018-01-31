@@ -4,10 +4,13 @@ rvm:
  - 2.4.3
 
 services:
-  - sqlite3
+  - mysql
 
 cache:
   - bundler
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test_database;'
 
 before_script:
   - cp config/database.travis.yml config/database.yml

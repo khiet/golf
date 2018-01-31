@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  ROLES        = %w(admin organiser)
+  ROLES        = %w(admin organizer)
   EMAIL_REGEXP = /\A[^@\s]+@[^@\s]+\z/
 
   has_secure_password
